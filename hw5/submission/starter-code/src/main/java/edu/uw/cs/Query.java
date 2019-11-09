@@ -168,10 +168,10 @@ public class Query {
           }
         }
         usersResults.close();
+	return "Login failed\n";
     } catch (SQLException e) {
-        e.printStackTrace();
+        return "Login failed\n";
     }
-    return "Login failed\n";
   }
 
   /**
