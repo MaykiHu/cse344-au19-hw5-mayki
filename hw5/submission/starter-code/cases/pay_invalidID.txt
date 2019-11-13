@@ -1,0 +1,65 @@
+# Terminal 1
+# Paying with straight up.. an invalid reservation id
+#
+# User 1's Commands
+create user1 user1 800
+login user1 user1
+search "Seattle WA" "Boston MA" 1 1 1
+book 0
+pay -1
+quit
+*
+#
+# Terminal 1 Expected output for User 1 succeed logging in
+#
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 297 minutes
+ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Duration: 297 Capacity: 14 Price: 140
+Booked flight(s), reservation ID: 1
+Cannot find unpaid reservation -1 under user: user1
+Goodbye
+|
+# Terminal 1 fails to login as Terminal 2 already has
+Created user user1
+User already logged in
+Itinerary 0: 1 flight(s), 297 minutes
+ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Duration: 297 Capacity: 14 Price: 140
+Cannot book reservations, not logged in
+Cannot pay, not logged in
+Goodbye
+*
+# Terminal 2
+# Paying with valid ids but one is "invalid" bc not under user
+#
+# User 2's Commands
+create user2 user2 800
+login user2 user2
+search "Seattle WA" "Boston MA" 1 1 1
+book 0
+pay 1
+pay 2
+quit
+*
+#
+# Expected output for User 2
+#
+Created user user2
+Logged in as user2
+Itinerary 0: 1 flight(s), 297 minutes
+ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Duration: 297 Capacity: 14 Price: 140
+Booked flight(s), reservation ID: 2
+Cannot find unpaid reservation 1 under user: user2
+Paid reservation: 2 remaining balance: 660
+Goodbye
+|
+# Terminal 2 fails to login as Terminal 1 already has
+Created user user2
+User already logged in
+Itinerary 0: 1 flight(s), 297 minutes
+ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Duration: 297 Capacity: 14 Price: 140
+Cannot book reservations, not logged in
+Cannot pay, not logged in
+Cannot pay, not logged in
+Goodbye
+*
