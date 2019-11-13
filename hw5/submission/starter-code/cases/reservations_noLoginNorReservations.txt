@@ -1,0 +1,19 @@
+#
+# Testing reservations without logging in, and then having no reservations
+#
+# User 1's commands (they have no reservations, is not logged in initially)
+create user1 user1 800
+reservations
+login user1 user1
+reservations
+quit
+*
+#
+# Expected output for User 1
+#
+Created user user1
+Cannot view reservations, not logged in
+Logged in as user1
+No reservations found
+Goodbye
+*
