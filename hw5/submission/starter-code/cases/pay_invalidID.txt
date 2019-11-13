@@ -28,6 +28,15 @@ ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Durat
 Cannot book reservations, not logged in
 Cannot pay, not logged in
 Goodbye
+|
+# Terminal 1 fails to find reservation after terminal 2 reserves successfully
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 297 minutes
+ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Duration: 297 Capacity: 14 Price: 140
+Booked flight(s), reservation ID: 2
+Cannot find unpaid reservation -1 under user: user1
+Goodbye
 *
 # Terminal 2
 # Paying with valid ids but one is "invalid" bc not under user
@@ -61,5 +70,15 @@ ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Durat
 Cannot book reservations, not logged in
 Cannot pay, not logged in
 Cannot pay, not logged in
+Goodbye
+|
+# Terminal 2 fails to find reservation 2 as reservation was made before terminal 1 reserved
+Created user user2
+Logged in as user2
+Itinerary 0: 1 flight(s), 297 minutes
+ID: 60454 Day: 1 Carrier: AS Number: 24 Origin: Seattle WA Dest: Boston MA Duration: 297 Capacity: 14 Price: 140
+Booked flight(s), reservation ID: 1
+Paid reservation: 1 remaining balance: 660
+Cannot find unpaid reservation 2 under user: user2
 Goodbye
 *
