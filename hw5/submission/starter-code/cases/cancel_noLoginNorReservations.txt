@@ -1,0 +1,19 @@
+#
+# Testing cancel without loggin in, and then having no reservations to cancel
+#
+# User 1's commands (they have no reservations, is not logged in initially)
+create user1 user1 800
+cancel 1
+login user1 user1
+cancel 1
+quit
+*
+#
+# Expected output for User 1
+#
+Created user user1
+Cannot cancel reservations, not logged in
+Logged in as user1
+Failed to cancel reservation 1
+Goodbye
+*
