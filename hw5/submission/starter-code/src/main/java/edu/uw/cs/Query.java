@@ -475,9 +475,9 @@ public class Query {
                 getf1CurCap.close();
                 getf2CurCap.close();
             }
-            if (f1CurCap > f1TotCap) { // Will exceed capacity flight 1
+            if (f1CurCap >= f1TotCap) { // Will exceed capacity flight 1
                 return "Booking failed\n";
-            } else if (fid2 != -1 && f2CurCap > f2TotCap) { // Will exceed capacity flight 2
+            } else if (fid2 != -1 && f2CurCap >= f2TotCap) { // Will exceed capacity flight 2
                 return "Booking failed\n";
             }
             int id = getId();
